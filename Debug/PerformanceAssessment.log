@@ -1,0 +1,13 @@
+﻿  main.cpp
+C:\WGU\Scripting and Application C867\PerformanceAssessment\PerformanceAssessment\student.h(38,1): error C2660: 'Student::setLastName': function does not take 0 arguments
+C:\WGU\Scripting and Application C867\PerformanceAssessment\PerformanceAssessment\student.h(29,7): message : see declaration of 'Student::setLastName'
+  student.cpp
+C:\WGU\Scripting and Application C867\PerformanceAssessment\PerformanceAssessment\student.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\WGU\Scripting and Application C867\PerformanceAssessment\PerformanceAssessment\student.h(38,1): error C2660: 'Student::setLastName': function does not take 0 arguments
+C:\WGU\Scripting and Application C867\PerformanceAssessment\PerformanceAssessment\student.h(29,7): message : see declaration of 'Student::setLastName'
+C:\WGU\Scripting and Application C867\PerformanceAssessment\PerformanceAssessment\student.cpp(43,33): error C2059: syntax error: ']'
+C:\WGU\Scripting and Application C867\PerformanceAssessment\PerformanceAssessment\student.cpp(91,148): error C2084: function 'Student::Student(int,std::string,std::string,std::string,int,int [],std::string)' already has a body
+C:\WGU\Scripting and Application C867\PerformanceAssessment\PerformanceAssessment\student.h(35): message : see previous definition of '{ctor}'
+C:\WGU\Scripting and Application C867\PerformanceAssessment\PerformanceAssessment\student.cpp(94,17): error C2660: 'Student::setLastName': function does not take 0 arguments
+C:\WGU\Scripting and Application C867\PerformanceAssessment\PerformanceAssessment\student.cpp(64,15): message : see declaration of 'Student::setLastName'
+  Generating Code...
