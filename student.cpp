@@ -48,9 +48,10 @@ int getDegreeProgram() {
     return 0;
 };
 
-/*
-** Setters
-*/
+/// <summary>
+///  setters
+/// </summary>
+///  
 
 void Student::setStudentID(string studentID)
 {
@@ -105,11 +106,10 @@ Student::Student(string studentID, string firstname, string lastname, string ema
     setEmailAddress(emailAddress);
     setDegreeProgram(degreeProgram);
     setDaysToCompleteCourse(daysToCompleteCourse);
-    cout << this->getFirstName() << " " << this->getLastName() << " created." << endl;
 }
 
-//create default constructor for testing purposes ONLY, to delete prior to submission
-
+//destructor
+Student::~Student() {};
 
 
 
@@ -120,7 +120,7 @@ void Student::print() {
     cout << "Last Name: " << getLastName() << '\t';
     cout << "Age: " << getAge() <<  '\t';
     cout << "Contact email: " << getEmailAddress() << '\t';
-    cout << "Days to Complete Program :" << "{" << getDaysToCompleteCourse() <<" " << getDaysToCompleteCourse(1) << " " << getDaysToCompleteCourse(2) << "}" <<'\t';
+    cout << "Days To Complete Program :" << "{" << getDaysToCompleteCourse() <<" " << getDaysToCompleteCourse(1) << " " << getDaysToCompleteCourse(2) << "}" <<'\t';
     //cout << "Degree Program: " <<getDegreeProgram() << '\t';
     cout << endl << endl << endl;
 };

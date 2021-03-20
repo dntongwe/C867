@@ -30,6 +30,7 @@ public:
 
 	//create constructors and destructor
 	Student(string studentID, string firstname, string lastname, string emailAddress, int age, int daysToCompleteCourse[], string degreeProgram);
+	~Student();
 	virtual void print();
 
 private:
@@ -42,5 +43,6 @@ private:
 	// degreeProgram;
 	int degreeProgram;
 };
+
 
 #endif

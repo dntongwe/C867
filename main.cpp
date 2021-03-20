@@ -13,9 +13,9 @@ int getDegree(string degree); // converts degree program into an enum;
 int main() {
 
 	cout << " **** **** BEGIN *Print Course title and Student ID **********************" << endl;
-	cout << " ********* Course Title: Scripting and Programming - Applications – C867 ****" << endl;
-	cout << " ********* Student ID: #002751555                                                     ****"<< endl;
-	cout << " ********* END ***************************************************" << endl << endl << endl << endl;
+	cout << " ********* Course Title: Scripting and Programming Applications - C867" << endl;
+	cout << " ********* Student ID: #002751555      "<< endl;
+	cout << " ********* END ***************************************************" << endl << endl;
 
 
 	// Declare variable holding studentData
@@ -33,6 +33,7 @@ int main() {
 	//parse Student Data
 
 	for (int i = 0; i < 5; i++) {
+		//parse data
 		vector<string> result;
 		stringstream s_stream(studentData[i]);
 		while (s_stream.good()) {
@@ -40,7 +41,8 @@ int main() {
 			getline(s_stream, substr, ',');
 			result.push_back(substr);
 		}
-
+		
+		// Add parsed data to the roster
 		string studentID = result.at(0);
 		string firstName = result.at(1);
 		string lastName = result.at(2);
@@ -50,28 +52,13 @@ int main() {
 		auto day2 = stoi(result.at(6));
 		auto day3 = stoi(result.at(7));
 		string degree = result.at(8);
-		int daysToComplete[] = { day1, day2, day3 };
-		//Student student = Student::Student(studentID, firstName, lastName, emailAddress, age, daysToComplete, degree);
-		cout << endl << endl;
+		int daysToComplete[] = { day1, day2, day3 }; // build array of days to complete
 		roster.add(studentID, firstName, lastName, emailAddress, age, daysToComplete, degree);
 	}
 
 
 	// Test results
-
-	cout << " ******** Print students on the roster"  << endl;
-
-	for (int i = 0; i < roster.roster; i++) {
-		Student student = *roster.classRosterArray[i];
-		cout << student.getFirstName() << " " << student.getLastName() << endl;
-	};
-
-
-	/// <summary>
-	/// Print of out the all students"
-	/// </summary>
-	/// <returns></returns>
-	cout << endl << endl << endl;
+	
 	roster.printAll();
 	roster.printInvalidEmails();
 	roster.printAverageDaysInCourse("A5");
