@@ -15,8 +15,10 @@ public:
 	string getLastName();
 	int getAge();
 	string getEmailAddress();
-    int getDaysToCompleteCourse(int i);
-	int getDegreeProgram();
+    int getDaysToCompleteCourse(int i); 
+	string getDegreeProgram();
+	//int* daysToCompleteCourse;
+	void getK();
 
 	//create setter methods
 	void setStudentID(string studentID);
@@ -26,6 +28,7 @@ public:
 	void setEmailAddress(string  emailAddress);
 	void setDaysToCompleteCourse(int daysToCompleteCourse[]);
 	void setDegreeProgram(string degreeProgram);
+	void setDegreeProgram(Degree degreeProgram);
 
 
 	//create constructors and destructor
@@ -40,8 +43,9 @@ private:
     int age;
 	string emailAddress;
 	int * daysToCompleteCourse;
+	//unique_ptr<int> daysToCompleteCourse;
 	// degreeProgram;
-	int degreeProgram;
+	Degree degreeProgram;
 };
 
 

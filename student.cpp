@@ -5,6 +5,19 @@ using namespace std;
 
 
 
+
+void Student::getK() {
+
+    //for (int i = 0; i < 3; i++) {
+        //cout << "Array element " << i << " = ";
+        //cout << *(daysToCompleteCourse + i) << endl << endl;
+       // cout << "{" << *(daysToCompleteCourse + i) << " " << *(daysToCompleteCourse + 1) << " " << *(daysToCompleteCourse + 2) << "}" << endl << endl;
+
+   // };
+
+    cout << "{" << *(daysToCompleteCourse ) << " " << *(daysToCompleteCourse + 1) << " " << *(daysToCompleteCourse + 2) << "}" << endl << endl;
+}
+   
 /*
 ** Setters
 */
@@ -43,10 +56,21 @@ int Student::getDaysToCompleteCourse(int i = 0)
     return *(daysToCompleteCourse + i);
 }
 
-int getDegreeProgram() {
-    //return degreeProgram;
-    return 0;
-};
+string Student::getDegreeProgram () {
+    
+    if (degreeProgram == Degree::SOFTWARE) {
+        return "SOFTWARE";
+    }
+    else if (degreeProgram == Degree::NETWORK) {
+        return "NETWORK";
+    }
+    else if (degreeProgram == Degree::SECURITY) {
+        return "SECURITY";
+    }
+    else {
+        return "UNKNOWN";
+    }
+}
 
 /// <summary>
 ///  setters
@@ -87,15 +111,22 @@ void Student::setDegreeProgram(string degreeProgram)
         else if (degreeProgram == "NETWORK") {
             this->degreeProgram = Degree::NETWORK;
         }
-        else {
+        else if (degreeProgram == "SECURITY") {
             this->degreeProgram = Degree::SECURITY;
+        } 
+        else {
+            this->degreeProgram = Degree::UNKNOWN;
         }
 }
 
+void Student::setDegreeProgram(Degree degreeProgram) {
+    this->degreeProgram = degreeProgram;
+};
 
 void Student::setDaysToCompleteCourse(int daysToCompleteCourse[])
 {
-        this->daysToCompleteCourse = daysToCompleteCourse;
+
+    this->daysToCompleteCourse = daysToCompleteCourse;
 }
 
 Student::Student(string studentID, string firstname, string lastname, string emailAddress, int age, int daysToCompleteCourse[], string degreeProgram) {
@@ -106,12 +137,11 @@ Student::Student(string studentID, string firstname, string lastname, string ema
     setEmailAddress(emailAddress);
     setDegreeProgram(degreeProgram);
     setDaysToCompleteCourse(daysToCompleteCourse);
+    getK();
 }
 
 //destructor
 Student::~Student() {};
-
-
 
 
 void Student::print() {
@@ -120,7 +150,8 @@ void Student::print() {
     cout << "Last Name: " << getLastName() << '\t';
     cout << "Age: " << getAge() <<  '\t';
     cout << "Contact email: " << getEmailAddress() << '\t';
-    cout << "Days To Complete Program :" << "{" << getDaysToCompleteCourse() <<" " << getDaysToCompleteCourse(1) << " " << getDaysToCompleteCourse(2) << "}" <<'\t';
-    //cout << "Degree Program: " <<getDegreeProgram() << '\t';
-    cout << endl << endl << endl;
+    //cout << Student::getK() << '\t';
+    cout << "Days To Complete Program :" << " { " << Student::getDaysToCompleteCourse() <<" " << Student::getDaysToCompleteCourse(1) << " " << Student::getDaysToCompleteCourse(2) <<  " }" <<'\t' <<endl;
+    cout << "Degree Program: " <<getDegreeProgram() << '\t';
+    cout << endl;
 };
