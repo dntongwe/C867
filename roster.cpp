@@ -8,21 +8,31 @@ using namespace std;
 
 
 //constructor
-classRoster::classRoster()  {	
-	this->roster = 0; 
-	this->classRosterArray[5];
+Roster::Roster() : roster(0) {
+	classRosterArray[5] = {};
+};
+
+Roster::~Roster() {
+
 };
 
 
 //Add student to classroster 
-void classRoster::add(string studentID, string firstname, string lastname, string emailAddress, int age, int daysToCompleteCourse[], string degreeProgram) {
-	classRosterArray[this->roster] = new Student(studentID, firstname, lastname, emailAddress, age, daysToCompleteCourse, degreeProgram);
+void Roster::add(string studentID, string firstname, string lastname, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, string degreeProgram) {
+	do {
+		int daysToCompleteCourse[3];
+		daysToCompleteCourse[0] = daysInCourse1;
+		daysToCompleteCourse[1] = daysInCourse2;
+		daysToCompleteCourse[2] = daysInCourse3;
+		classRosterArray[this->roster] = new Student(studentID, firstname, lastname, emailAddress, age, daysToCompleteCourse, degreeProgram);
+	} while (false);
 	this->roster++;
 };
 
 //print students by degree program
-void classRoster::printByDegreeProgram(string degreeProgram) {
-	cout << "******* The following students are enrolled in the " << degreeProgram << ":" << endl;
+void Roster::printByDegreeProgram(string degreeProgram) {
+
+	cout << "Printing list of students enrolled in the " << degreeProgram << " program :" << endl;
 	for (int i = 0; i < this->roster; i++) {
 		Student student = *this->classRosterArray[i];
 		if (student.getDegreeProgram() == degreeProgram) {
@@ -32,11 +42,11 @@ void classRoster::printByDegreeProgram(string degreeProgram) {
 };
 
 //remove student from the roster;
-void classRoster::remove(string studentID) {
+void Roster::remove(string studentID) {
 	for (int i = 0; i < this->roster; i++) {
 		Student student = *this->classRosterArray[i];
 		if (student.getStudentID() == studentID) {
-			cout << endl << "Removing "<< student.getFirstName() << " " << student.getLastName() << " from the roster ..." << endl;
+			cout << endl << "Removing student with ID " << student.getStudentID() << ", "  << student.getFirstName() << " " << student.getLastName() << " from the roster ..." << endl;
 			student.~Student();
 			cout <<"Student Removed!!!" << endl;
 			while (i < this->roster-1) {
@@ -50,8 +60,8 @@ void classRoster::remove(string studentID) {
 };
 
 //print students on the roster
-void classRoster::printAll() {
-	cout << endl << " *************** List of students on the roster  *************" << endl;
+void Roster::printAll() {
+	cout << endl << "Printing current list of students on the roster ... " << endl;
 	for (int i = 0; i < this->roster; i++) {
 		Student student = *this->classRosterArray[i];
 		student.print();
@@ -60,29 +70,32 @@ void classRoster::printAll() {
 
 
 //Print average number of days in the program/course
-void classRoster::printAverageDaysInCourse(string studentID) {
+void Roster::printAverageDaysInCourse(string studentID) {
 	for (int i = 0; i < this->roster; i++) {
 		Student student = *this->classRosterArray[i];
 		if (student.getStudentID() == studentID) {
-			cout << endl << "Calculating the average number of days " 
-			<< student.getFirstName() << " " << student.getLastName()<< " has been in the program ..."<< endl;
-			int numDays= (student.getDaysToCompleteCourse(0) + student.getDaysToCompleteCourse(1) + student.getDaysToCompleteCourse(2));
+			cout << endl << "Calculating the average number of days student with ID "  << 
+			  student.getStudentID() << ", " << student.getFirstName() << " " 
+				<< student.getLastName()<< " spends per course ..."<< endl;
+			int numDays= (student.getDaysToCompleteCourse(0) + 
+				student.getDaysToCompleteCourse(1) + student.getDaysToCompleteCourse(2));
 			int aveDays = numDays / 3;
-			cout << "The result is approx. " << aveDays <<" Days." << endl;
+			cout << "The result is approx. " << aveDays << " Days." << endl << endl << endl;
 		}
 	};
 };
 
 // check roster for students with invalid email addresses
-void classRoster::printInvalidEmails() {
+void Roster::printInvalidEmails() {
+	cout << endl << "Searching roster for invalid email addresses ...";
 	for (int i = 0; i < this->roster; i++) {
 		Student student = *this->classRosterArray[i];
 		string email = student.getEmailAddress();
 		if ((!email.find("@") && !email.find(".")) || email.find(" ") ) {
-			cout << endl << "Student with an ID of " << student.getStudentID()
+			cout << endl << "Exception Noted!!! Student with ID " << student.getStudentID()
 				<< ", " << student.getFirstName() << " " << student.getLastName()
-				<< " has  an invalid email ." << endl;
-			cout << "Email address provided: " << student.getEmailAddress() << endl << endl;
+				<< " has an invalid email." << endl;
+			cout << "Address provided: " << student.getEmailAddress() << endl << endl;
 			return;
 		}
 	};

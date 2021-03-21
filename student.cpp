@@ -5,18 +5,6 @@ using namespace std;
 
 
 
-
-void Student::getK() {
-
-    //for (int i = 0; i < 3; i++) {
-        //cout << "Array element " << i << " = ";
-        //cout << *(daysToCompleteCourse + i) << endl << endl;
-       // cout << "{" << *(daysToCompleteCourse + i) << " " << *(daysToCompleteCourse + 1) << " " << *(daysToCompleteCourse + 2) << "}" << endl << endl;
-
-   // };
-
-    cout << "{" << *(daysToCompleteCourse ) << " " << *(daysToCompleteCourse + 1) << " " << *(daysToCompleteCourse + 2) << "}" << endl << endl;
-}
    
 /*
 ** Setters
@@ -51,24 +39,27 @@ string Student::getEmailAddress()
 }
 
 
-int Student::getDaysToCompleteCourse(int i = 0)
+int Student::getDaysToCompleteCourse(int i)
 {
-    return *(daysToCompleteCourse + i);
-}
+
+     return  this->daysToCompleteCourse[i];
+
+ }
+ 
 
 string Student::getDegreeProgram () {
     
     if (degreeProgram == Degree::SOFTWARE) {
-        return "SOFTWARE";
+        return "Software";
     }
     else if (degreeProgram == Degree::NETWORK) {
-        return "NETWORK";
+        return "Network";
     }
     else if (degreeProgram == Degree::SECURITY) {
-        return "SECURITY";
+        return "Security";
     }
     else {
-        return "UNKNOWN";
+        return "Not Entered";
     }
 }
 
@@ -123,13 +114,16 @@ void Student::setDegreeProgram(Degree degreeProgram) {
     this->degreeProgram = degreeProgram;
 };
 
-void Student::setDaysToCompleteCourse(int daysToCompleteCourse[])
-{
 
-    this->daysToCompleteCourse = daysToCompleteCourse;
+
+void Student::setDaysToCompleteCourse(int daysToCompleteCourse[3])
+{
+    for (int i = 0; i < 3; i++) {
+        this->daysToCompleteCourse[i] = daysToCompleteCourse[i];
+     }
 }
 
-Student::Student(string studentID, string firstname, string lastname, string emailAddress, int age, int daysToCompleteCourse[], string degreeProgram) {
+Student::Student(string studentID, string firstname, string lastname, string emailAddress, int age, int daysToCompleteCourse[3], string degreeProgram) {
     setStudentID(studentID);
     setFirstName(firstname);
     setLastName(lastname);
@@ -137,7 +131,6 @@ Student::Student(string studentID, string firstname, string lastname, string ema
     setEmailAddress(emailAddress);
     setDegreeProgram(degreeProgram);
     setDaysToCompleteCourse(daysToCompleteCourse);
-    getK();
 }
 
 //destructor
@@ -145,13 +138,15 @@ Student::~Student() {};
 
 
 void Student::print() {
-    cout << "StudentID: " << getStudentID() << '\t';
-    cout << "First Name: " << getFirstName() << '\t';
-    cout << "Last Name: " << getLastName() << '\t';
-    cout << "Age: " << getAge() <<  '\t';
-    cout << "Contact email: " << getEmailAddress() << '\t';
-    //cout << Student::getK() << '\t';
-    cout << "Days To Complete Program :" << " { " << Student::getDaysToCompleteCourse() <<" " << Student::getDaysToCompleteCourse(1) << " " << Student::getDaysToCompleteCourse(2) <<  " }" <<'\t' <<endl;
-    cout << "Degree Program: " <<getDegreeProgram() << '\t';
+   // cout << "StudentID: " << getStudentID() << '\t';
+    cout << "First Name: " << Student::getFirstName() << '\t';
+    cout << "Last Name: " << Student::getLastName() << '\t';
+    cout << "Age: " << Student::getAge() <<  '\t';
+    cout << "Contact email: " << Student::getEmailAddress() << '\t';
+    
+    cout << "daysInCourse: " <<"{"<< this->daysToCompleteCourse[0] << ", " << this->daysToCompleteCourse[1] << ", " << this->daysToCompleteCourse[2] <<"}"<<'\t';
+
+    //cout << "daysInCourse: " <<"{"<< this->getDaysToCompleteCourse(0)<< ", " << this->getDaysToCompleteCourse(1) << ", " << this->getDaysToCompleteCourse(2) <<"}"<<'\t';
+    cout << "Degree Program: " << Student::getDegreeProgram() << '\t';
     cout << endl;
 };

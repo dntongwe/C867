@@ -7,17 +7,16 @@
 #include "roster.h"
 using namespace std;
 
-
+//Declare course title and provide student ID
 int main() {
-
-	cout << " BEGIN ********* *Print Course title and Student ID **********************" << endl;
-	cout << " ********* Course Title: Scripting and Programming Applications" << endl;
+	cout << endl;
+	cout << " ***********************************************************************" << endl;
+	cout << " ********* Course Title: Scripting and Programming Applications - C867" << endl;
 	cout << " ********* Student ID: #002751555      " << endl;
-	cout << " ************************************************************************ END " 
-	<< endl << endl;
+	cout << " ***********************************************************************" << endl;
+	cout << endl;
 
-
-	// Declare variable holding studentData
+	// Declare array and pass to it studentData
 	string studentData[] = {
 	"A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
 	"A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
@@ -26,40 +25,48 @@ int main() {
 	"#002751555,Dieudonne,Ntongwe,dntongwe@wgu.edu,43,20,25,33,SOFTWARE"
 	};
 
-	classRoster classRoster;
+	Roster classRoster; //instantiate a roster object
 
+	//loop through string array to parse student data and instantiate student objects
 	for (int i = 0; i < 5; i++) {
 		//parse data
-		vector<string> result;
+		vector<string> student;
 		stringstream s_stream(studentData[i]);
 		while (s_stream.good()) {
 			string substr;
 			getline(s_stream, substr, ',');
-			result.push_back(substr);
+			student.push_back(substr);
 		}
-
-		// Add parsed data to the roster
-		string studentID = result.at(0);
-		string firstName = result.at(1);
-		string lastName = result.at(2);
-		string emailAddress = result.at(3);
-		string degree = result.at(8);
-		auto age = stoi(result.at(4));
-		auto day1 = stoi(result.at(5));
-		auto day2 = stoi(result.at(6));
-		auto day3 = stoi(result.at(7));
-		int daysToComplete[3] = { day1, day2, day3 };
-		classRoster.add(studentID, firstName, lastName, emailAddress, age, daysToComplete, degree);
+		// instantiate student based parsed data to the roster
+		string studentID = student.at(0);
+		string firstName = student.at(1);
+		string lastName = student.at(2);
+		string emailAddress = student.at(3);
+		string degree = student.at(8);
+		auto age = stoi(student.at(4));
+		auto daysInCourse1 = stoi(student.at(5));
+		auto daysInCourse2 = stoi(student.at(6));
+		auto daysInCourse3 = stoi(student.at(7));
+		classRoster.add(studentID, firstName, lastName, emailAddress, age, daysInCourse1, daysInCourse2, daysInCourse3, degree);
 	}
 
+	//test properties and methods of roster object
+	classRoster.printAll(); //prints students on roster
+	classRoster.printInvalidEmails(); //lists students with invalid email addresses
+	classRoster.printAverageDaysInCourse("#002751555"); //calculates and prints average time per course
+	classRoster.printByDegreeProgram("SOFTWARE");// lists students in a given program
 	classRoster.printAll();
-	classRoster.printInvalidEmails();
-	classRoster.printByDegreeProgram("SOFTWARE");
-	classRoster.remove("A3");
+	classRoster.remove("A3"); //removes given students from roster
+	classRoster.printAll(); 
+	classRoster.remove("A4");
 	classRoster.printAll();
-	classRoster.printInvalidEmails();
-	classRoster.printAverageDaysInCourse("A1");
 
+
+	cout << endl << endl;
+	cout << "End of submission!!. Much appreciated." << endl << endl << endl;
+
+
+	system("PAUSE");
 	return 0;
 }
 

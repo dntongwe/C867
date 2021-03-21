@@ -7,13 +7,14 @@
 using namespace std;
 
 
-class classRoster
+class Roster
 {
 	public:
-		classRoster();
+		Roster();
+		~Roster();
 		Student* classRosterArray[5];
 		int rosterSize = 0;
-		void add(string studentID, string firstname, string lastname, string emailAddress, int age, int daysToCompleteCourse[], string degreeProgram);
+		void add(string studentID, string firstname, string lastname, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, string degreeProgram);
 		void remove(string studentID);
 		void printAll();
 		void printAverageDaysInCourse(string studentID);

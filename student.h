@@ -17,8 +17,8 @@ public:
 	string getEmailAddress();
     int getDaysToCompleteCourse(int i); 
 	string getDegreeProgram();
-	//int* daysToCompleteCourse;
-	void getK();
+
+
 
 	//create setter methods
 	void setStudentID(string studentID);
@@ -42,10 +42,9 @@ private:
 	string lastname;
     int age;
 	string emailAddress;
-	int * daysToCompleteCourse;
-	//unique_ptr<int> daysToCompleteCourse;
-	// degreeProgram;
 	Degree degreeProgram;
+	int daysToCompleteCourse[3];
+
 };
 
 
