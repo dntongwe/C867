@@ -1,10 +1,11 @@
 #ifndef Student_class
 #define Student_class
-
 #include <iostream>
 #include <string>
 #include "degree.h"
 using namespace std;
+
+
 
 class Student
 {
@@ -17,6 +18,7 @@ public:
 	string getEmailAddress();
     int getDaysToCompleteCourse(int i); 
 	string getDegreeProgram();
+	Degree getdegreeProgram();
 
 
 
@@ -29,6 +31,7 @@ public:
 	void setDaysToCompleteCourse(int daysToCompleteCourse[]);
 	void setDegreeProgram(string degreeProgram);
 	void setDegreeProgram(Degree degreeProgram);
+
 
 
 	//create constructors and destructor
@@ -46,6 +49,7 @@ private:
 	int daysToCompleteCourse[3];
 
 };
+
 
 
 #endif

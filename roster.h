@@ -2,8 +2,8 @@
 #define Roster_class
 
 #include <iostream>
-#include "student.h"
 #include "degree.h"
+#include "student.h"
 using namespace std;
 
 
@@ -19,7 +19,7 @@ class Roster
 		void printAverageDaysInCourse(string studentID);
 		void printInvalidEmails();
 		void printByDegreeProgram(Degree degreeProgram);
-		void printByDegreeProgram(string degreeProgram); // function overlop, search by string also
+		//void printByDegreeProgram(string degreeProgram); // function overlop, search by string also
 		void setclassRosterArray();
 		int roster;	
 

@@ -11,5 +11,4 @@ enum Degree {
 	UNKNOWN
 };
 
-
 #endif

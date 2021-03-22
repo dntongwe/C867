@@ -7,6 +7,8 @@
 #include "roster.h"
 using namespace std;
 
+
+
 //Declare course title and provide student ID
 int main() {
 	cout << endl;
@@ -54,7 +56,7 @@ int main() {
 	classRoster.printAll(); //prints students on roster
 	classRoster.printInvalidEmails(); //lists students with invalid email addresses
 	classRoster.printAverageDaysInCourse("#002751555"); //calculates and prints average time per course
-	classRoster.printByDegreeProgram("SOFTWARE");// lists students in a given program
+	classRoster.printByDegreeProgram(SOFTWARE);// lists students in a given program
 	classRoster.printAll();
 	classRoster.remove("A3"); //removes given students from roster
 	classRoster.printAll(); 
@@ -69,4 +71,5 @@ int main() {
 	system("PAUSE");
 	return 0;
 }
+
 

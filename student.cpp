@@ -1,8 +1,7 @@
 #include <iostream>
-#include "student.h"
 #include "degree.h"
+#include "student.h"
 using namespace std;
-
 
 
    
@@ -41,26 +40,24 @@ string Student::getEmailAddress()
 
 int Student::getDaysToCompleteCourse(int i)
 {
-
      return  this->daysToCompleteCourse[i];
-
  }
  
+Degree Student::getdegreeProgram() {
+    return this->degreeProgram;
+};
 
 string Student::getDegreeProgram () {
-    
-    if (degreeProgram == Degree::SOFTWARE) {
-        return "Software";
-    }
-    else if (degreeProgram == Degree::NETWORK) {
-        return "Network";
-    }
-    else if (degreeProgram == Degree::SECURITY) {
-        return "Security";
-    }
-    else {
-        return "Not Entered";
-    }
+       switch (degreeProgram) {
+       case SECURITY:
+           return "Security";
+       case NETWORK:
+           return "Network";
+       case SOFTWARE:
+           return "Software";
+       default:
+           return "UNKNOWN PROGRAM";
+       }
 }
 
 /// <summary>
@@ -94,6 +91,10 @@ void Student::setEmailAddress(string emailAddress)
     this->emailAddress = emailAddress;
 }
 
+void Student::setDegreeProgram(Degree degreeProgram) {
+    this->degreeProgram = degreeProgram;
+};
+
 void Student::setDegreeProgram(string degreeProgram)
 {
         if (degreeProgram == "SOFTWARE") {
@@ -110,9 +111,7 @@ void Student::setDegreeProgram(string degreeProgram)
         }
 }
 
-void Student::setDegreeProgram(Degree degreeProgram) {
-    this->degreeProgram = degreeProgram;
-};
+
 
 
 
@@ -150,3 +149,6 @@ void Student::print() {
     cout << "Degree Program: " << Student::getDegreeProgram() << '\t';
     cout << endl;
 };
+
+
+

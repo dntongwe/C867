@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
+#include "degree.h"
 #include "roster.h"
 #include "student.h"
-#include "degree.h"
+
 
 using namespace std;
 
@@ -29,17 +30,30 @@ void Roster::add(string studentID, string firstname, string lastname, string ema
 	this->roster++;
 };
 
-//print students by degree program
-void Roster::printByDegreeProgram(string degreeProgram) {
 
-	cout << "Printing list of students enrolled in the " << degreeProgram << " program :" << endl;
+//print students by degree program, query by Degree
+void Roster::printByDegreeProgram(Degree degreeProgram) {
+	string enum_reader(Degree degree); // converts enums to strings
+	cout << "Printing students enrolled in the " << enum_reader(degreeProgram) << " program :" << endl;
 	for (int i = 0; i < this->roster; i++) {
 		Student student = *this->classRosterArray[i];
-		if (student.getDegreeProgram() == degreeProgram) {
+		if (student.getdegreeProgram() == degreeProgram) {
 			student.print();
 		}
-	}
+	};
+
 };
+//print students by degree program, query by string
+//void Roster::printByDegreeProgram(string degreeProgram) {
+//
+//	cout << "Printing list of students enrolled in the " << degreeProgram << " program :" << endl;
+//	for (int i = 0; i < this->roster; i++) {
+//		Student student = *this->classRosterArray[i];
+//		if (student.getDegreeProgram() == degreeProgram) {
+//			student.print();
+//		}
+//	}
+//};
 
 //remove student from the roster;
 void Roster::remove(string studentID) {
@@ -61,7 +75,7 @@ void Roster::remove(string studentID) {
 
 //print students on the roster
 void Roster::printAll() {
-	cout << endl << "Printing current list of students on the roster ... " << endl;
+	cout << endl << "Printing current  students on the roster ... " << endl;
 	for (int i = 0; i < this->roster; i++) {
 		Student student = *this->classRosterArray[i];
 		student.print();
@@ -79,8 +93,8 @@ void Roster::printAverageDaysInCourse(string studentID) {
 				<< student.getLastName()<< " spends per course ..."<< endl;
 			int numDays= (student.getDaysToCompleteCourse(0) + 
 				student.getDaysToCompleteCourse(1) + student.getDaysToCompleteCourse(2));
-			int aveDays = numDays / 3;
-			cout << "The result is approx. " << aveDays << " Days." << endl << endl << endl;
+			double aveDays = numDays / 3; //days to be rounded up below;
+			cout << "The result is approx. " << ceil(aveDays) << " Days." << endl << endl << endl;
 		}
 	};
 };
@@ -102,3 +116,15 @@ void Roster::printInvalidEmails() {
 	cout << endl << " No invalid email address found! " << endl;
 };
 
+string enum_reader(Degree degree) {
+	switch (degree) {
+	case SECURITY:
+		return "Security";
+	case NETWORK:
+		return "Network";
+	case SOFTWARE:
+		return "Software";
+	default:
+		return "UNKNOWN PROGRAM";
+	}
+}
