@@ -60,7 +60,7 @@ int main() {
 	classRoster.printAll();
 	classRoster.remove("A3"); //removes given students from roster
 	classRoster.printAll(); 
-	classRoster.remove("A4");
+	classRoster.remove("A3");
 	classRoster.printAll();
 
 

@@ -68,9 +68,11 @@ void Roster::remove(string studentID) {
 				i++;
 			}
 			roster--;
+			return;
 		}
-
 	}
+
+	cout << endl << "Student with ID " << studentID << " Does Not Exist on Roster." << endl;
 };
 
 //print students on the roster
